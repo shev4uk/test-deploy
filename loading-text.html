@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        #loading-text {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50vh;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        #content {
+            display: none;
+            /* Add your desired styles for the website content here */
+        }
+    </style>
+    <script>
+        function getRandomText() {
+            var loadingTexts = ["Preparing...", "Loading...", "Please wait..."];
+            var randomIndex = Math.floor(Math.random() * loadingTexts.length);
+            return loadingTexts[randomIndex];
+        }
+        
+        window.onload = function() {
+            var loadingText = document.getElementById("loading-text");
+            loadingText.innerHTML = getRandomText();
+            
+            setTimeout(function() {
+                loadingText.style.opacity = "0";
+                setTimeout(function() {
+                    loadingText.style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                }, 500);
+            }, 5000);
+        };
+    </script>
+</head>
+<body>
+    <h1 id="loading-text"></h1>
+    
+    <div id="content">
+        <!-- Your website content goes here -->
+    </div>
+</body>
+</html>

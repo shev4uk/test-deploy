@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Rotating Red Rectangle</title>
+        <style>
+            body {
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                background-color: black;
+            }
+    
+            #rectangle {
+                width: 100%;
+                height: 100%;
+                background-image: url(images/floor.jpg);
+                transform-origin: bottom;
+                transition: transform 4s ease;
+                cursor: pointer;
+                z-index: 1;
+            }
+
+            #wall {
+                position: fixed;
+                width: 500px;
+                height: 500px;
+                z-index: -1;
+                background-color: aqua;
+            }
+
+            #text {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #FF0000;
+            font-size: 100px;
+            font-weight: bolder;
+            text-align: center;
+
+            
+        }
+
+    
+            .rotate {
+                transform: rotateX(80deg);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="rectangle">
+            <span id="text">please click</span>
+        </div>
+
+    <div id="wall"></div>
+
+    
+    
+    
+    </body>
+        <script>
+            document.getElementById("rectangle").addEventListener("click", function() {
+                this.classList.toggle("rotate");
+            });
+        </script>
+
+</html>
+
+
+
+
