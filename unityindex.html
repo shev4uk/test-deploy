@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>BlueWorldGallery</title>
+    <link rel="icon" type="image/x-icon" href="bw-fav2.png">
+
+    <style>
+      body {
+        text-align: center;
+        padding: 0;
+        border: 0;
+        margin: 0;
+        background-color: #282828;
+        overflow: hidden;
+      }
+
+
+
+	#loading-text {
+            font-size: 24px;
+            text-align: center;
+		color: white;
+		position: fixed;
+		z-index: 1;
+		width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        
+        .hide {
+            display: none;
+        }
+	
+
+	#unity-canvas {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100vh;
+        background: #282828;
+        aspect-ratio: 16 / 9;
+        cursor: pointer !important;
+      }
+
+      #link-r {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+
+      #link-h {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+
+      #fullscreen-button {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 1000;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      #controls {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        z-index: 1000;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+
+   a:hover {
+  background-color: blue;
+}
+
+
+    </style>
+  </head>
+
+  <body>
+
+<div id="loading-text">Loading...</div>
+   
+    <a href="https://d2zo9ma9cc3dd8.cloudfront.net/Test/index.html" id="link-r" title="Refresh">R</a>
+    <a href="https://www.blueworldgallery.com/" id="link-h" title="Go Home">H</a>
+    <canvas id="unity-canvas"></canvas>
+    <div id="controls" title="Controls">C</div>
+    <div id="fullscreen-button" title="Fullscreen">F</div>
+
+
+   <script src="Build/build15.loader.js"></script>
+
+      <script>
+
+		if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+              // Mobile device style: fill the whole browser client area with the game canvas:
+              var meta = document.createElement('meta');
+              meta.name = 'viewport';
+              meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no,       		  shrink-to-fit=yes';
+              document.getElementsByTagName('head')[0].appendChild(meta);
+
+              var canvas = document.querySelector("#unity-canvas");
+              canvas.style.width = "100%";
+              canvas.style.height = "100%";
+              canvas.style.position = "fixed";
+
+              document.body.style.textAlign = "left";
+          }
+
+
+createUnityInstance(document.querySelector("#unity-canvas"), {
+    dataUrl: "Build/build15.data.br",
+    frameworkUrl: "Build/build15.framework.js.br",
+    codeUrl: "Build/build15.wasm.br",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "DefaultCompany",
+    productName: "gallery as stills",
+    productVersion: "0.1.0",
+    // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+    // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+}).then(() => {
+    var loadingText = document.getElementById('loading-text');
+    loadingText.classList.add('hide');
+})
+
+
+          const fullscreenButton = document.getElementById("fullscreen-button");
+          fullscreenButton.addEventListener("click", () => {
+              const elem = document.documentElement;
+              if (!document.fullscreenElement) {
+                  if (elem.requestFullscreen) {
+                      elem.requestFullscreen();
+                  } else if (elem.webkitRequestFullscreen) {
+                      elem.webkitRequestFullscreen();
+                  } else if (elem.msRequestFullscreen) {
+                      elem.msRequestFullscreen();
+                  }
+              } else {
+                  if (document.exitFullscreen) {
+                      document.exitFullscreen();
+                  } else if (document.webkitExitFullscreen) {
+                      document.webkitExitFullscreen();
+                  } else if (document.msExitFullscreen) {
+                      document.msExitFullscreen();
+                  }
+              }
+
+          });
+
+
+
+      </script>
+  </body>
+</html>
