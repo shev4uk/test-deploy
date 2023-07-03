@@ -19,7 +19,7 @@
             perspective: 1000px; /* Defines the perspective for 3D transforms */
         }
 
-        #floor {
+        /* #floor {
             position: absolute;
             top: 0;
             left: 0;
@@ -29,6 +29,39 @@
             transform-origin: bottom;
             transition: transform 4s ease;
             cursor: pointer;
+        } */
+
+        .plane {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 4s ease;
+            cursor: pointer;
+        }
+
+        .plane-wall {
+            background-image: url(images/floor-small.jpg);
+            transform-origin: bottom;
+        }
+
+
+        .left-wall {
+            background-image: url(images/floor2.jpg);
+            transform: rotateY(80deg);
+            transform-origin: left;
+        }
+
+        .left-wall.rotate {
+            transform: rotateY(0);
+            z-index: 1;
+        }
+
+        .right-wall {
+            background-image: url(images/floor2.jpg);
+            transform: rotateY(-80deg);
+            transform-origin: right;
         }
 
         #floor-text {
@@ -65,14 +98,20 @@
 </head>
 <body>
     <div id="floor-container">
-        <div id="floor">
+        <div class="plane left-wall"></div>
+        <div id="floor" class="plane plane-wall rotate">
             <span id="floor-text">please click</span>
         </div>
+        <div class="plane right-wall"></div>
         <div class="behind-element">This is behind the floor</div>
     </div>
 
     <script>
         document.getElementById("floor").addEventListener("click", function() {
+            this.classList.toggle("rotate");
+        });
+
+        document.querySelector(".left-wall").addEventListener("click", function() {
             this.classList.toggle("rotate");
         });
     </script>
