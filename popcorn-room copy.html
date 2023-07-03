@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Popcorn room</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden; /* Prevents elements from overflowing the viewport */
+        }
+
+        #floor-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px; /* Defines the perspective for 3D transforms */
+        }
+
+        #floor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(images/floor-small.jpg);
+            transform-origin: bottom;
+            transition: transform 4s ease;
+            cursor: pointer;
+        }
+
+        #floor-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #FF0000;
+            font-size: 100px;
+            font-weight: bolder;
+            z-index: 2; /* Ensures the text is displayed above other elements */
+        }
+
+        .behind-element {
+            display: none; /* Initially hide the element */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 40px;
+            z-index: 1; /* Places the element behind the floor */
+        }
+
+        .rotate .behind-element {
+            display: block; /* Display the element when .rotate class is applied to #floor */
+        }
+
+        .rotate {
+            transform: rotateX(80deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="floor-container">
+        <div id="floor">
+            <span id="floor-text">please click</span>
+        </div>
+        <div class="behind-element">This is behind the floor</div>
+    </div>
+
+    <script>
+        document.getElementById("floor").addEventListener("click", function() {
+            this.classList.toggle("rotate");
+        });
+    </script>
+</body>
+</html>
