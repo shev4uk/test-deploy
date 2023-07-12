@@ -93,17 +93,7 @@ body {
 }
 
 
-.wrapper-gallery-doors {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: showGallery 5s forwards;
-  visibility: hidden;
-  opacity: 0;
-}
+
 #demo {
   position: absolute;
   top: 0;
@@ -111,13 +101,42 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.loading-icon {
+  width: auto;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 8s 1s forwards;
+  padding: 10px;
+  font-size: 18px;
+
+}
+
 .wrapper-first-door {
   display: flex;
   position: absolute;
   width: 100%;
   height: 100%;
   cursor: pointer;
-  animation: fadeIn 5s reverse forwards;
+  animation: fadeIn 8s reverse forwards;
+}
+
+.wrapper-gallery-doors {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: showGallery 8s forwards;
+  visibility: hidden;
+  opacity: 0;
 }
 
   
@@ -375,18 +394,18 @@ h1 {
 }
 
 
-.loading-icon {
-  width: 200px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #fff;
-  margin: auto;
-  position: relative;
-  z-index: 1;
-  animation: fadeIn 5s 1s forwards;
-}
+
+
+#link-about {
+        position: fixed;
+        top: 10px;
+        left: 20px;
+        z-index: 1000;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
 
 
 
@@ -397,17 +416,20 @@ h1 {
   <div class="container">
 
     <div class="loading-icon">
-      Some text
+      “Spaces are born and die..they live, they have a history"
+      <br>
+     -Pierre Francastel 
     </div>
     <div class="wrapper-gallery-doors">
      
       <div id="loading-scrim"></div>
       <div id="message" style="display: none;">Please visit from your desktop or laptop :)</div>
-    
+      <a href="about.html" id="link-about" title="about">About</a>
       <div id="demo">
 
         <main>
     
+
     
           <a class="landing-links" id="gallery-doors" href="https://d2zo9ma9cc3dd8.cloudfront.net/Test/index.html"><img class="to-gallery"
               id="to-gallery-1" src="images/gallery-door-1.jpg" alt="gallery door" />
