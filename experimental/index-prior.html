@@ -131,7 +131,6 @@
         animation: showGallery 8s forwards;
         visibility: hidden;
         opacity: 0;
-        background: #000;
       }
 
       .wrapper-first-door.open {
@@ -150,6 +149,15 @@
         justify-content: center;
         height: 100vh;
         width: 100vw;
+      }
+
+      main .landing-links {
+        display: inline-grid;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 75%;
       }
 
       h2 {
@@ -369,14 +377,7 @@
         text-decoration: none;
       }
       #message {
-        display: none;
-      }
-
-      .img-map {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        max-width: 100%;
+        display: none
       }
     </style>
   </head>
@@ -390,32 +391,46 @@
       </div>
       <div class="wrapper-gallery-doors">
         <div id="loading-scrim"></div>
-        <div id="message">Please visit from your desktop or laptop :)</div>
+        <div id="message">
+          Please visit from your desktop or laptop :)
+        </div>
         <a href="about.html" id="link-about" title="about">about</a>
         <div id="demo">
           <main>
-            <img
-              src="images/popcorn-room.jpg"
-              class="img-map"
-              alt="Image 1"
-            />
-            <svg class="img-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 2250">
-              <defs>
-                <style>
-                  .cls-1 {
-                    fill: transparent;
-                    stroke: transparent;
-                    stroke-miterlimit: 10;
-                    cursor: pointer;
-                  }
-                </style>
-              </defs>
-              <polygon class="cls-1 area-link" points="497.12 1458.81 1260.69 1446.43 1246.93 852.08 1125.86 740.64 1017.17 664.97 887.85 598.94 845.2 575.55 770.9 615.45 630.57 720.01 543.9 803.93 497.12 850.71 497.12 1458.81" data-link="https://d2zo9ma9cc3dd8.cloudfront.net/v1-18/index.html"/>
-              <polygon class="cls-1 area-link" points="2732.79 1449.18 3504.61 1461.56 3504.61 813.56 3479.16 746.15 3410.37 659.47 3286.55 583.11 3180.61 555.6 3077.43 555.6 2992.13 575.55 2906.83 615.45 2834.6 668.41 2787.82 719.32 2746.55 794.99 2732.79 850.02 2732.79 1449.18" data-link="https://www.blueworldgallery.com"/>
-              <polygon class="cls-1 area-link" points="1760.1 1296.46 2227.87 1290.96 2255.39 1219.42 2215.49 1167.14 1753.22 1185.03 1746.34 1231.8 1760.1 1296.46" data-link="https://www.blueworldgallery.com"/>
-              <polygon class="cls-1 area-link" points="1765.61 1341.87 2069.66 1355.62 2226.5 1370.76 2232 1438.17 2220.99 1487.7 1758.73 1461.56 1731.21 1391.39 1765.61 1341.87" data-link="https://d2zo9ma9cc3dd8.cloudfront.net/v1-18/index.html"/>
-            </svg>
+            <div class="rectangle"></div>
+            <a
+              class="landing-links"
+              id="gallery-doors"
+              href="https://d2zo9ma9cc3dd8.cloudfront.net/Test/index.html"
+              ><img
+                class="to-gallery"
+                id="to-gallery-1"
+                src="images/gallery-door-1.jpg"
+                alt="gallery door"
+              />
+              <img
+                class="to-gallery"
+                src="images/gallery-door-2.jpg"
+                id="to-gallery-2"
+                alt="gallery door"
+              />
+              <h2>gallery entrance</h2>
+            </a>
+
+            <a
+              class="landing-links"
+              id="archive-door"
+              href="https://nnwv.notion.site/96bbf44d71e94e299eaaa8c0d9d1be55?v=cd97f986d28d4789b94a856b150a4913"
+              ><img
+                class="to-archive"
+                id="to-archive-1"
+                src="images/archive-door.jpg"
+                alt="archive door"
+              />
+              <h2>archive entrance</h2>
+            </a>
           </main>
+
         </div>
       </div>
       <div class="wrapper-first-door">
@@ -427,6 +442,8 @@
         </div>
       </div>
     </div>
+    
+    
 
     <script>
       const gallery = document.querySelector(".gallery");
@@ -445,28 +462,10 @@
         }, 2000);
       }
 
-      const userAgentString = navigator.userAgent;
-      let safariAgent = userAgentString.indexOf("Safari") > -1;
-      let chromeAgent = userAgentString.indexOf("Chrome") > -1;
-
-      if ((chromeAgent) && (safariAgent)) safariAgent = false;
-
-      if (window.innerWidth < 767 || safariAgent) {
+      if (window.innerWidth < 800) {
         document.getElementById("demo").style.display = "none";
         document.getElementById("message").style.display = "inline";
       }
-
-      // screen.orientation.lock('landscape');
-
-      // if (window.matchMedia("(orientation: portrait)").matches) {
-      //   // you're in PORTRAIT mode
-      //   console.log('portrait');
-      // }
-
-      // if (window.matchMedia("(orientation: landscape)").matches) {
-      //   // you're in LANDSCAPE mode
-      //   console.log('landscape');
-      // }
 
       let landingPage = async () => {
         let imgs = document.images,
@@ -489,16 +488,26 @@
       const galleryDoorLeft = document.getElementById("to-gallery-1");
       const galleryDoorRight = document.getElementById("to-gallery-2");
 
+      let slideDoors = async () => {
+        setTimeout(() => {
+          galleryDoorLeft.classList.add("slideLeft");
+          galleryDoorRight.classList.add("slideRight");
+        }, 1000);
+      };
+
+      let zipperDoor = async () => {
+        document
+          .getElementById("to-archive-1")
+          .setAttribute("src", "images/archive-door-closed.jpg");
+      };
+
       landingPage();
 
-      const areaLinks = document.querySelectorAll(".area-link");
-      areaLinks.forEach((area) => {
-        area.addEventListener("click", function () {
-          const link = this.getAttribute("data-link");
-          console.log(link);
-          window.location.href = link;
-        });
-      });
+      slideDoors();
+
+      document
+        .getElementById("to-archive-1")
+        .addEventListener("mouseenter", zipperDoor);
     </script>
   </body>
 </html>
