@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>BlueWorldGallery</title>
     <link rel="icon" type="image/x-icon" href="images/bw-fav2.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
     <style>
       *,
       *:before,
@@ -83,10 +83,6 @@
         background-size: cover;
         z-index: -1;
         position: fixed;
-        /* bottom: 0;
-  position: fixed; */
-        /* transform: rotateX(70deg);
-  transform-origin: bottom; */
       }
 
       #demo {
@@ -103,7 +99,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        /* border: 2px solid #fff; */
         margin: auto;
         position: relative;
         z-index: 1;
@@ -183,14 +178,6 @@
         filter: invert(0.03);
       }
 
-      #to-gallery-1 {
-        border-right: 0px;
-      }
-
-      #to-gallery-2 {
-        border-left: 0px;
-      }
-
       .slideLeft {
         position: relative;
         -webkit-animation: slideLeft 10s ease infinite;
@@ -227,28 +214,6 @@
         }
       }
 
-      @-webkit-keyframes slideright {
-        0% {
-          right: 0px;
-        }
-
-        15% {
-          right: -5px;
-        }
-
-        60% {
-          right: -5px;
-        }
-
-        75% {
-          right: 0px;
-        }
-
-        100% {
-          right: 0px;
-        }
-      }
-
       @-moz-keyframes slideLeft {
         0% {
           left: 0px;
@@ -268,28 +233,6 @@
 
         100% {
           left: 0px;
-        }
-      }
-
-      @-moz-keyframes slideright {
-        0% {
-          right: 0px;
-        }
-
-        15% {
-          right: -5px;
-        }
-
-        60% {
-          right: -5px;
-        }
-
-        75% {
-          right: 0px;
-        }
-
-        100% {
-          right: 0px;
         }
       }
 
@@ -385,7 +328,7 @@
   <body>
     <div class="container">
       <div class="loading-text">
-        “Spaces are born and die..they live, they have a history"
+        "Spaces are born and die..they live, they have a history"
         <br />
         (Pierre Francastel)
       </div>
@@ -398,7 +341,7 @@
             <img
               src="images/popcorn-room.jpg"
               class="img-map"
-              alt="Image 1"
+              alt="Room"
             />
             <svg class="img-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 2250">
               <defs>
@@ -421,10 +364,10 @@
       </div>
       <div class="wrapper-first-door">
         <div class="image-container gallery">
-          <img src="images/image1big.jpg" alt="Image 1" />
+          <img src="images/image1big.jpg" alt="Left door" />
         </div>
         <div class="image-container archive">
-          <img src="images/image2big.jpg" alt="Image 2" />
+          <img src="images/image2big.jpg" alt="Right door" />
         </div>
       </div>
     </div>
@@ -457,18 +400,6 @@
         document.getElementById("message").style.display = "inline";
       }
 
-      // screen.orientation.lock('landscape');
-
-      // if (window.matchMedia("(orientation: portrait)").matches) {
-      //   // you're in PORTRAIT mode
-      //   console.log('portrait');
-      // }
-
-      // if (window.matchMedia("(orientation: landscape)").matches) {
-      //   // you're in LANDSCAPE mode
-      //   console.log('landscape');
-      // }
-
       let landingPage = async () => {
         let imgs = document.images,
           len = imgs.length,
@@ -487,16 +418,12 @@
         }
       };
 
-      const galleryDoorLeft = document.getElementById("to-gallery-1");
-      const galleryDoorRight = document.getElementById("to-gallery-2");
-
       landingPage();
 
       const areaLinks = document.querySelectorAll(".area-link");
       areaLinks.forEach((area) => {
         area.addEventListener("click", function () {
           const link = this.getAttribute("data-link");
-          console.log(link);
           window.location.href = link;
         });
       });

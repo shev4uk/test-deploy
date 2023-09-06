@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>BlueWorldGallery</title>
+    <link rel="icon" type="image/x-icon" href="images/bw-fav2.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Baskerville", serif;
+        padding: 0;
+        margin: 0;
+        color: #fff;
+        width: 100vw;
+        background: #282828;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: none;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        background: #282828;
+        height: 100vh;
+      }
+
+      .image-container img {
+        display: block;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .image-container.gallery {
+        width: 50%;
+        position: relative;
+        overflow: hidden;
+        transition: all 5s ease;
+        transform-origin: left;
+        border: 5px groove;
+      }
+
+      .image-container.archive {
+        width: 50%;
+        position: relative;
+        overflow: hidden;
+        transition: all 5s ease;
+        transform-origin: right;
+        border: 5px groove;
+        display: block;
+      }
+
+      .image-container.gallery.open {
+        transform: perspective(4096px) rotateY(-89deg);
+      }
+
+      .image-container.archive.open {
+        transform: perspective(4096px) rotateY(89deg);
+      }
+
+      .rectangle {
+        height: 100%;
+        width: 100%;
+        background-image: url("images/bricks.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -1;
+        position: fixed;
+      }
+
+      #demo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .wrapper-first-door {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .wrapper-gallery-doors {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+      }
+
+      .wrapper-first-door.open {
+        pointer-events: none;
+      }
+
+      a {
+        color: white;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 42.5%);
+        flex-flow: row;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+
+      h2 {
+        position: absolute;
+        opacity: 0.65;
+        left: 4px;
+        top: 60%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 3vw;
+      }
+
+      .landing-links:first-of-type {
+        background: radial-gradient(white 40%, transparent 60%);
+      }
+
+      .to-gallery,
+      .to-archive {
+        border: 3px groove #f0f0f0;
+        border-radius: 2px;
+        display: grid;
+        width: 100%;
+        margin: 0 auto;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+
+      .to-gallery:hover,
+      .to-archive:hover {
+        filter: invert(0.03);
+      }
+
+      #link-about {
+        position: fixed;
+        top: 10px;
+        right: 30px;
+        z-index: 1000;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+      }
+      #message {
+        display: none;
+      }
+
+      .img-map {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="wrapper-gallery-doors">
+        <div id="message">Please visit from your desktop or laptop :)</div>
+        <a href="about.html" id="link-about" title="about">about</a>
+        <div id="demo">
+          <main>
+            <img
+              src="images/popcorn-room.jpg"
+              class="img-map"
+              alt="Room"
+            />
+            <svg class="img-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4000 2250">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill: transparent;
+                    stroke: transparent;
+                    stroke-miterlimit: 10;
+                    cursor: pointer;
+                  }
+                </style>
+              </defs>
+              <polygon class="cls-1 area-link" points="497.12 1458.81 1260.69 1446.43 1246.93 852.08 1125.86 740.64 1017.17 664.97 887.85 598.94 845.2 575.55 770.9 615.45 630.57 720.01 543.9 803.93 497.12 850.71 497.12 1458.81" data-link="https://d2zo9ma9cc3dd8.cloudfront.net/v1-18/index.html"/>
+              <polygon class="cls-1 area-link" points="2732.79 1449.18 3504.61 1461.56 3504.61 813.56 3479.16 746.15 3410.37 659.47 3286.55 583.11 3180.61 555.6 3077.43 555.6 2992.13 575.55 2906.83 615.45 2834.6 668.41 2787.82 719.32 2746.55 794.99 2732.79 850.02 2732.79 1449.18" data-link="https://www.blueworldgallery.com"/>
+              <polygon class="cls-1 area-link" points="1760.1 1296.46 2227.87 1290.96 2255.39 1219.42 2215.49 1167.14 1753.22 1185.03 1746.34 1231.8 1760.1 1296.46" data-link="https://www.blueworldgallery.com"/>
+              <polygon class="cls-1 area-link" points="1765.61 1341.87 2069.66 1355.62 2226.5 1370.76 2232 1438.17 2220.99 1487.7 1758.73 1461.56 1731.21 1391.39 1765.61 1341.87" data-link="https://d2zo9ma9cc3dd8.cloudfront.net/v1-18/index.html"/>
+            </svg>
+          </main>
+        </div>
+      </div>
+      <div class="wrapper-first-door open">
+        <div class="image-container gallery open">
+          <img src="images/image1big.jpg" alt="Left door" />
+        </div>
+        <div class="image-container archive open">
+          <img src="images/image2big.jpg" alt="Right door" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const userAgentString = navigator.userAgent;
+      let safariAgent = userAgentString.indexOf("Safari") > -1;
+      let chromeAgent = userAgentString.indexOf("Chrome") > -1;
+
+      if ((chromeAgent) && (safariAgent)) safariAgent = false;
+
+      if (window.innerWidth < 767 || safariAgent) {
+        document.getElementById("demo").style.display = "none";
+        document.getElementById("message").style.display = "inline";
+      }
+
+      const areaLinks = document.querySelectorAll(".area-link");
+      areaLinks.forEach((area) => {
+        area.addEventListener("click", function () {
+          const link = this.getAttribute("data-link");
+          window.location.href = link;
+        });
+      });
+    </script>
+  </body>
+</html>
