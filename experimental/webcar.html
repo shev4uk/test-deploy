@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-<style>
+    <style>
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        height: 100vh;
+        /* cursor: url('../images/Image20230906095136.png'), auto; */
+        cursor: url('https://res.cloudinary.com/dvkugaw3b/image/upload/v1641562028/cursor_ad12rf.png'), auto;
+      }
 
-body {
-    
-}
+      iframe {
+        position: fixed;
+        top: -5vh;
+        transform: scale(0.9);
+        border: red 10px;
+        width: 100vw;
+        height: 100vh;
+      }
 
+      img {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        bottom: 0;
+        z-index: 1000;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe src="https://bing.com" title="description" name="iframe1" id="iframe1"></iframe>
 
-iframe {
-    border: red 10px;
-    width: 100vw;
-    height: 100vh;
-
-
-}
-
-img {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    bottom: 0;
-    z-index: 1000;
-
-}
-
-
-</style>
-
-
-
-</head>
-<body>
-
-
-    <iframe src="https://bing.com" title="description"></iframe>
-
-    <img src="images/webcar.png" alt="">
-    
-</body>
+    <img src="../images/webcar.png" alt="" />
+    <script>
+        // frame1.document.querySelector('html').style.overflow = 'hidden';
+        // var cssLink = document.createElement("link");
+        // cssLink.href = "webcar.css"; 
+        // cssLink.rel = "stylesheet"; 
+        // cssLink.type = "text/css"; 
+        // frames['iframe1'].document.head.appendChild(cssLink);
+    </script>
+  </body>
 </html>
