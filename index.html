@@ -178,107 +178,7 @@
         filter: invert(0.03);
       }
 
-      .slideLeft {
-        position: relative;
-        -webkit-animation: slideLeft 10s ease infinite;
-        -moz-animation: slideLeftt 10s ease infinite;
-        animation: slideLeft 10s ease infinite;
-      }
-
-      .slideRight {
-        position: relative;
-        -webkit-animation: slideRight 10s ease infinite;
-        -moz-animation: slideRight 10s ease infinite;
-        animation: slideRight 10s ease infinite;
-      }
-
-      @-webkit-keyframes slideLeft {
-        0% {
-          left: 0px;
-        }
-
-        15% {
-          left: -5px;
-        }
-
-        60% {
-          left: -5px;
-        }
-
-        75% {
-          left: 0px;
-        }
-
-        100% {
-          left: 0px;
-        }
-      }
-
-      @-moz-keyframes slideLeft {
-        0% {
-          left: 0px;
-        }
-
-        15% {
-          left: -5px;
-        }
-
-        60% {
-          left: -5px;
-        }
-
-        75% {
-          left: 0px;
-        }
-
-        100% {
-          left: 0px;
-        }
-      }
-
-      @keyframes slideLeft {
-        0% {
-          left: 0px;
-        }
-
-        15% {
-          left: -5px;
-        }
-
-        60% {
-          left: -5px;
-        }
-
-        75% {
-          left: 0px;
-        }
-
-        100% {
-          left: 0px;
-        }
-      }
-
-      @keyframes slideRight {
-        0% {
-          right: 0px;
-        }
-
-        15% {
-          right: -5px;
-        }
-
-        60% {
-          right: -5px;
-        }
-
-        75% {
-          right: 0px;
-        }
-
-        100% {
-          right: 0px;
-        }
-      }
+      
 
       @keyframes fadeIn {
         0% {
@@ -292,10 +192,12 @@
 
       @keyframes showGallery {
         0%,
+        
         99% {
           visibility: hidden;
           opacity: 0;
         }
+
         100% {
           visibility: visible;
           opacity: 1;
