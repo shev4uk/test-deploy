@@ -42,10 +42,17 @@ btnBuy.forEach((btn) => {
         fontFamily: 'Ideal Sans, system-ui, sans-serif',
         spacingUnit: '2px',
         borderRadius: '4px',
+        colorTextSecondary: '#30313d'
         // See all possible variables below
       },
       rules: {
+        '.Tab, .Tab:hover': {
+          color: '#30313d'
+        },
         '.Input': {
+          color: '#30313d'
+        },
+        '.Block': {
           color: '#30313d'
         }
       }

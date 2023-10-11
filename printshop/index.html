@@ -108,6 +108,7 @@
     </style>
 
     <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/glider.min.css" />
     <link rel="stylesheet" href="css/printshop.css" />
     <script src="https://js.stripe.com/v3/"></script>
 
@@ -124,20 +125,53 @@
     </header>
     <section class="products">
       <div class="container">
-        <div class="product">
+        <!-- <div class="product">
           <p class="product-name">
             Sam Mapp, Le Monde Bleu 1, 2019, 30” x 40”, Archival print on luster paper
           </p>
           <div class="product-detail">
-            <p class="product-price">$10</p>
-            <button type="button" class="btn-buy" data-amount="1000" data-name="Product 1">Buy Now</button>
+            <p class="product-price">$20</p>
+            <button type="button" class="btn-buy" data-amount="2000" data-name="Product 1">Buy Now</button>
           </div>
           <div class="product-pictures">
             <img src="../images/soane-bank-of-england.jpg" class="img-responsive product-picture" alt="">
             <img src="../images/soane-bank-of-england.jpg" class="img-responsive product-picture" alt="">
+            <img src="../images/soane-bank-of-england.jpg" class="img-responsive product-picture" alt="">
+            <img src="../images/soane-bank-of-england.jpg" class="img-responsive product-picture" alt="">
           </div>
+        </div> -->
+        <div class="slider-container">
+          <div class="slider-products">
+            <div class="single-product">
+              <img src="../images/Image20231011091127.jpg" class="img-responsive product-picture" alt="">
+              <div class="desc-product">
+                <p class="product-name">
+                  Sam Mapp, Le Monde Bleu 1, 2019, 30” x 40”, Archival print on luster paper
+                </p>
+                <div class="product-detail">
+                  <p class="product-price">$100</p>
+                  <button type="button" class="btn-buy" data-amount="10000" data-name="Product 1">Buy Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="single-product">
+              <img src="../images/sam mapp artwork 16 9.png" class="img-responsive product-picture" alt="">
+              <div class="desc-product">
+                <p class="product-name">
+                  Sam Mapp, Le Monde Bleu 1, 2019, 30” x 40”, Archival print on luster paper
+                </p>
+                <div class="product-detail">
+                  <p class="product-price">$100</p>
+                  <button type="button" class="btn-buy" data-amount="10000" data-name="Product 1">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button aria-label="Previous" class="glider-prev">«</button>
+          <button aria-label="Next" class="glider-next">»</button>
+          <div role="tablist" class="dots"></div>
         </div>
-        <div class="product">
+        <!-- <div class="product">
           <p class="product-name">
             Sam Mapp, Le Monde Bleu 1, 2019, 30” x 40”, Archival print on luster paper
           </p>
@@ -149,7 +183,7 @@
             <img src="../images/soane-bank-of-england.jpg" class="img-responsive product-picture" alt="">
             <img src="../images/soane-bank-of-england.jpg" class="img-responsive product-picture" alt="">
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
     <div class="panel-payment">
@@ -181,6 +215,7 @@
       </div>
     </div>
 
+    <script src="glider.min.js"></script>
     <script>
       const btnBuy = document.querySelectorAll('.btn-buy');
       const panel = document.querySelector('.panel-payment');
@@ -196,6 +231,16 @@
       });
       cart.addEventListener('click', function() {
         panel.classList.add('open');
+      });
+      new Glider(document.querySelector('.slider-products'), {
+        slidesToShow: 1,
+        dots: '#dots',
+        draggable: true,
+        arrows: {
+          prev: '.glider-prev',
+          next: '.glider-next'
+        },
+        draggable: true
       });
     </script>
   </body>

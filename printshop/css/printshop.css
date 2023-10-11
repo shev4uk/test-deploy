@@ -100,3 +100,31 @@ header .container {
   border: none;
   cursor: pointer;
 }
+
+.single-product {
+  position: relative;
+  height: calc(100vh - 100px) !important;
+}
+.single-product .product-picture {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.desc-product {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+}
+.single-product .btn-buy {
+  background: #000;
+}
+
+.slider-container .glider-prev {
+  left: 0;
+}
+.slider-container .glider-next {
+  right: 0;
+}
+.slider-container {
+  position: relative;
+}
