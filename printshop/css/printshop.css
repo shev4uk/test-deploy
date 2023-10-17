@@ -119,12 +119,12 @@ header .container {
   background: #000;
 }
 
-.slider-container .glider-prev {
-  left: 0;
+/* .glide__arrow {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
 }
-.slider-container .glider-next {
-  right: 0;
-}
-.slider-container {
-  position: relative;
-}
+.glide__arrow:active {
+  transform: translateY(-50%);
+} */
