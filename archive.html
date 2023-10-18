@@ -20,7 +20,7 @@
       }
       .table {
         position: relative;
-        perspective: 200px;
+        /* perspective: 200px; */
       }
       iframe {
         height: 100%;
@@ -31,6 +31,9 @@
       iframe.vissible {
         visibility: visible;
       }
+      .list-link {
+        font-size: 24px;
+      }
       .list-link.hide {
         display: none;
       }
@@ -38,6 +41,7 @@
       .wrapper {
         max-width: 800px;
         margin: 0 auto;
+        position: relative;
       }
 
       .ipad {
@@ -48,13 +52,13 @@
         margin: 0 auto 4em auto;
         border-radius: 3em;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0.5) rotateX(2deg);
+        /* top: 50%;
+        left: 50%; */
+        /* transform: translate(-50%, -50%) scale(0.5) rotateX(2deg); */
       }
-      .ipad.up {
+      /* .ipad.up {
         transform: translate(-50%, -50%) scale(1);
-      }
+      } */
 
       .camera {
         position: absolute;
@@ -70,7 +74,7 @@
       .appleicon {
         padding-top: 25%;
         opacity: 0;
-        animation: unhide 5s infinite alternate;
+        /* animation: unhide 5s infinite alternate; */
       }
 
       .appleicon img {
@@ -82,17 +86,17 @@
         opacity: 0;
         font-size: 1.25rem;
         text-align: center;
-        animation: unhide 5s infinite alternate;
+        /* animation: unhide 5s infinite alternate; */
       }
 
       .screen {
-        background: #2f2f2f;
+        background: #fff;
         width: 82.5%;
         height: 82.5%;
         position: absolute;
         top: 8.75%;
         left: 8.75%;
-        animation: lighten 5s infinite alternate;
+        /* animation: lighten 5s infinite alternate; */
       }
 
       .button {
@@ -115,24 +119,6 @@
         border-radius: 0.3em;
         width: 45%;
         height: 45%;
-      }
-
-      @media screen and (min-width: 28em) {
-        body {
-          font-size: 6px;
-        }
-      }
-
-      @media screen and (min-width: 34em) {
-        body {
-          font-size: 8px;
-        }
-      }
-
-      @media screen and (min-width: 48em) {
-        body {
-          font-size: 10px;
-        }
       }
 
       @keyframes lighten {
@@ -165,11 +151,17 @@
         <div class="ipad">
           <div class="camera"></div>
           <div class="screen">
-            <!-- Put screen stuff in here -->
-            <div class="appleicon">
-              <img src="https://goo.gl/4xuZUj" />
-            </div>
-            <div class="text">This is a free template! Have fun!</div>
+            <ul class="list-link">
+              <li>
+                <a href="https://www.e-flux.com/notes/506238/a-sick-planet"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="https://web.stanford.edu/~davies/Symbsys100-Spring0708/Marx-Commodity-Fetishism.pdf">Home</a>
+              </li>
+            </ul>
+            <iframe src="" class="ipad-frame" frameborder="0"></iframe>
           </div>
           <div class="button">
             <div class="square"></div>
@@ -193,6 +185,7 @@
       const listLink = document.querySelector(".list-link");
       const iframe = document.querySelector("iframe");
       listLink.addEventListener("click", function (e) {
+        console.log(e);
         e.preventDefault();
         const target = e.target;
         console.dir(target);
