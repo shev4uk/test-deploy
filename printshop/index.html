@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue World Gallery Printshop</title>
+
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        padding-top: 10px;
+        font-family: "Baskerville", serif;
+        background: #282828;
+        font-size: 18px;
+        color: whitesmoke;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: none;
+      }
+
+      .container {
+        padding: 0px 30px 0px;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+      }
+      .products {
+        margin: 30px 0;
+      }
+
+      .products .product {
+        display: grid;
+        margin: 0 -15px 30px;
+        grid-template-areas: "name"
+                              "detail"
+                              "pictures";
+      }
+      .product-name {
+        grid-area: name;
+        padding: 0 15px;
+      }
+      .product-detail {
+        margin-bottom: 20px;
+        grid-area: detail;
+        padding: 0 15px;
+      }
+      .product-pictures {
+        grid-area: pictures;
+        padding: 0 15px;
+      }
+      .product-picture {
+        margin-bottom: 20px;
+      }
+      .product-price {
+        margin-bottom: 10px;
+      }
+      @media screen and (min-width: 992px) {
+        .products .product {
+          grid-template-areas: "name detail pictures";
+          grid-template-columns: 40% 20% 30%;
+        }
+      }
+      .btn-buy {
+        font-size: 1.2rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.75);
+        padding: 0.8rem 1rem;
+        border: 0;
+        border-radius: 10rem;
+        cursor: pointer;
+      }
+      .img-responsive {
+        max-width: 100%;
+      }
+      .panel-payment {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100vh;
+        transform: translateX(400px);
+        background: rgb(51, 51, 51);
+        transition: 0.3s;
+      }
+      .panel-payment.open {
+        transform: translateX(0px);
+      }
+      .btn-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/glide.core.min.css" />
+    <link rel="stylesheet" href="css/glide.theme.min.css" />
+
+    <link rel="stylesheet" href="css/printshop.css" />
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <p class="logo">Blue World Gallery Printshop</p>
+        <a class="cart">CART</a>
+      </div>
+    </header>
+    <section class="products">
+      <div class="container">
+        <div class="glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+              <li class="glide__slide">
+                <div class="single-product">
+                  <img src="../images/Image20231011091127.jpg" class="img-responsive product-picture" alt="">
+                  <div class="desc-product">
+                    <p class="product-name">
+                      Sam Mapp, Le Monde Bleu 1, 2019, 30” x 40”, Archival print on luster paper
+                    </p>
+                    <div class="product-detail">
+                      <p class="product-price">$100</p>
+                      <button type="button" class="btn-buy" data-amount="10000" data-name="Product 1">Buy Now</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="glide__slide">
+                <div class="single-product">
+                  <img src="../images/sam mapp artwork 16 9.png" class="img-responsive product-picture" alt="">
+                  <div class="desc-product">
+                    <p class="product-name">
+                      Sam Mapp, Le Monde Bleu 1, 2019, 30” x 40”, Archival print on luster paper
+                    </p>
+                    <div class="product-detail">
+                      <p class="product-price">$100</p>
+                      <button type="button" class="btn-buy" data-amount="10000" data-name="Product 1">Buy Now</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="panel-payment">
+      <button class="btn-close">
+        <svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.400000006">
+            <g id="Group" transform="translate(1.000000, 1.000000)" stroke="#FFFFFF" stroke-width="2">
+              <path d="M0,0 L15,15" id="Path-3"></path>
+              <path d="M0,0 L15,15" id="Path-3" transform="translate(7.500000, 7.500000) rotate(-270.000000) translate(-7.500000, -7.500000) "></path>
+            </g>
+          </g>
+        </svg>
+      </button>
+      <div>
+        <form id="payment-form">
+          <div id="link-authentication-element">
+            <!-- Elements will create authentication element here -->
+          </div>
+          <div id="payment-element">
+            <!-- Elements will create form elements here -->
+          </div>
+          <button id="submit">Pay now</button>
+          <div id="error-message">
+            <!-- Display error message to your customers here -->
+          </div>
+        </form>
+  
+        <!-- <div id="messages" role="alert" style="display: none;"></div> -->
+      </div>
+    </div>
+
+    <script src="glide.min.js"></script>
+    <script>
+      new Glide('.glide').mount();
+    </script>
+    <script>
+      const btnBuy = document.querySelectorAll('.btn-buy');
+      const panel = document.querySelector('.panel-payment');
+      const btnClose = document.querySelector('.btn-close');
+      const cart = document.querySelector('.cart');
+      btnBuy.forEach(btn => {
+        btn.addEventListener('click', function() {
+          panel.classList.add('open');
+        });
+      });
+      btnClose.addEventListener('click', function() {
+        panel.classList.remove('open');
+      });
+      cart.addEventListener('click', function() {
+        panel.classList.add('open');
+      });
+    </script>
+  </body>
+</html>
